@@ -83,9 +83,14 @@ two Vercel Cron jobs handle mailbox polling and assignment timeouts.
   cannot enumerate a group's full member list — that's a Telegram Bot API
   limitation, not something this bot works around.
 - **Cron frequency is plan-gated.** Vercel's Hobby plan runs cron jobs at
-  most once a day; the `*/5 * * * *` schedules in `vercel.json` (mailbox
-  polling and timeout checks every 5 minutes) require a Pro plan. On
-  Hobby, job alerts and timeouts would only be picked up once a day.
+  most once a day, so `vercel.json` currently schedules `poll-emails` and
+  `check-timeouts` once daily. Upgrade the Vercel team to Pro and tighten
+  those schedules (e.g. `*/5 * * * *`) for near-real-time polling and
+  timeouts — on Hobby, job alerts and timeouts are only picked up once a
+  day. As a workaround on Hobby, an external scheduler (GitHub Actions
+  cron, cron-job.org, etc.) can hit `/api/cron/poll-emails` and
+  `/api/cron/check-timeouts` as often as you like, with the `CRON_SECRET`
+  sent as `Authorization: Bearer <secret>`.
 - `imapflow` opens a fresh IMAP connection per cron invocation (no
   persistent connection between runs), which is what makes it work in a
   serverless environment.

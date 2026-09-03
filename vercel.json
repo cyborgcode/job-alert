@@ -1,7 +1,7 @@
 {
   "crons": [
-    { "path": "/api/cron/poll-emails", "schedule": "*/5 * * * *" },
-    { "path": "/api/cron/check-timeouts", "schedule": "*/5 * * * *" }
+    { "path": "/api/cron/poll-emails", "schedule": "0 13 * * *" },
+    { "path": "/api/cron/check-timeouts", "schedule": "30 13 * * *" }
   ],
   "functions": {
     "api/cron/poll-emails.ts": { "maxDuration": 60 },
