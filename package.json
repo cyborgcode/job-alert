@@ -1,0 +1,20 @@
+{
+  "name": "job-alert-bot",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "imapflow": "^1.0.171",
+    "mailparser": "^3.7.1",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "@types/mailparser": "^3.4.5",
+    "@types/node": "^22.10.2",
+    "@types/pg": "^8.11.10",
+    "@vercel/node": "^3.2.24",
+    "typescript": "^5.7.2"
+  }
+}
